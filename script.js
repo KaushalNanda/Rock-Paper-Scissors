@@ -3,9 +3,8 @@
 let user_score = 0;
 let computer_score = 0;
 
-// const user_board = document.querySelector('div.scoreboard .user')
-const user_board = document.querySelector('div.scoreboard.user')
-const computer_board = document.querySelector('div.scoreboard.comp')
+const user_board = document.querySelector('div.scoreboard .user')
+const computer_board = document.querySelector('div.scoreboard .comp')
 
 const message_box = document.querySelector("div.message")
 
@@ -23,7 +22,7 @@ const generateComputerResponse = () => {
     return choices[index]
 }
 
-const result = (winner,userResponse,computerResponse) => {
+const result = (winner, userResponse, computerResponse) => {
     switch(winner){
         case "user":
             // display message
@@ -43,29 +42,30 @@ const result = (winner,userResponse,computerResponse) => {
 }
 
 const playGame = (userResponse) => {
+    console.log(userResponse);
     const computerResponse = generateComputerResponse()
     if (userResponse === computerResponse) return console.log('Tie!!')
     switch (userResponse) {
         case "rock":
             switch (computerResponse) {
                 case "paper":
-                    return result("computer",userResponse,computerResponse)
+                    return result("computer", userResponse, computerResponse)
                 case "scissors":
-                    return result("user",userResponse,computerResponse)
+                    return result("user", userResponse, computerResponse)
             }
         case "paper":
             switch (computerResponse) {
                 case "rock":
-                    return result("user",userResponse,computerResponse)
+                    return result("user", userResponse, computerResponse)
                 case "scissors":
-                    return result("computer",userResponse,computerResponse)
+                    return result("computer", userResponse, computerResponse)
             }
         case "scissors":
             switch (computerResponse) {
                 case "rock":
-                    return result("computer",userResponse,computerResponse)
+                    return result("computer", userResponse, computerResponse)
                 case "paper":
-                    return result("user",userResponse,computerResponse)
+                    return result("user", userResponse, computerResponse)
             }
         default:
             window.alert('invalid response')
@@ -74,6 +74,7 @@ const playGame = (userResponse) => {
 
 }
 
+// add event listeners
 rock.addEventListener('click', (e) => playGame(e.target.id))
 paper.addEventListener('click', (e) => playGame(e.target.id))
 scissors.addEventListener('click', (e) => playGame(e.target.id))
