@@ -27,7 +27,7 @@ const result = (winner, userResponse, computerResponse) => {
         case "user":
             // display message
             message_box.innerHTML=` User Wins !! <br/> ${userResponse} beats ${computerResponse} `
-            document.querySelector(`#${userResponse}`).classList.add('won')
+            document.querySelector(`#${userResponse}`).classList.add('user_won')
             // setTimeout(2000,()=> document.querySelector(`#${userResponse}`).classList.remove('won'))
             // update scoreboard
             user_board.innerHTML=++user_score

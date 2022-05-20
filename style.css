@@ -55,11 +55,15 @@ div.scoreboard div.comp::after {
 
 
 /* options styles */
-
-.won {
+.comp_won {
+    border: 5px solid black !important;
+    border-radius: 50%;
+}
+.user_won {
     border: 5px solid lime !important;
     border-radius: 50%;
 }
+
 
 div.options {
     display: flex;
