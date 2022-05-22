@@ -8,7 +8,12 @@ body{
     height: 100px;
     border: 6px solid rgb(255, 255, 255);
     border-radius: 60%;
+    gap: 2rem;
+    padding: 20px;
 }
+/* img{
+    image-resolution: ;
+} */
 img:hover{
     cursor: pointer;
 }
@@ -56,14 +61,14 @@ div.scoreboard div{
     border: 8px solid rgb(59, 224, 122) !important ;
     width: 110px !important;
     height: 110px !important;
-    transition: 0.5s ease;
+    transition: 0.8s ease;
 }
 
 .cmp{
     border: 8px solid rgb(255, 0, 0) !important ;
     width: 110px !important;
     height: 110px !important;
-    transition: 0.5s ease;
+    transition: 0.8s ease;
 }
 
 
@@ -109,5 +114,5 @@ color : rgb(0, 0, 255);
     border: 8px solid rgb(4, 0, 255) !important;
     width: 110px !important;
     height: 110px !important;
-    transition: 0.5s ease;
+    transition: 0.8s ease;
 }

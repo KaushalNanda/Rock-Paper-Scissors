@@ -23,7 +23,7 @@ let rock = document.getElementById('rock');
 let paper = document.getElementById('paper');
 let scissor = document.getElementById('scissor');
  
-var user_name = prompt('Enter your name');
+var user_name = prompt('Welcome to the game Enter ur Good  name');
 
 let reset = document.querySelector('#reset');
 
