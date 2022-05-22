@@ -1,80 +1,186 @@
-// could also use nth child selector
+// const car={
+//     model:"9"
+// }
+// const brand={
+//     name:"audi"
+// }
+// const c={
+//     ...car,
+//     ...brand
+// }
+// console. log(c)
+// const arr=["c45","c48","c26"]
+// const [c1,c2] = arr
+// console.log(arr)
+// const obj={
+//     name:"dfd5",
+//     brand:"audi",
+//     make:"2020"
+// }
+// const {brand:band,make}=obj
+// console.log(obj)
+let rock = document.getElementById('rock');
+let paper = document.getElementById('paper');
+let scissor = document.getElementById('scissor');
+ 
+var user_name = prompt('Enter your name');
 
-let user_score = 0;
-let computer_score = 0;
+let reset = document.querySelector('#reset');
 
-const user_board = document.querySelector('div.scoreboard .user')
-const computer_board = document.querySelector('div.scoreboard .comp')
+var message = document.querySelector('.Winner-text');
+var user_score = 0;
+var comp_score = 0;
 
-const message_box = document.querySelector("div.message")
+var u_score = document.querySelector('.user-board');
+var c_score = document.querySelector('.computer');
 
-const rock = document.querySelector("#rock")
-const paper = document.querySelector("#paper")
-const scissors = document.querySelector("#scissors")
+var tie_class;
 
-// Available choices
-const choices = ["rock", "paper", "scissors"]
-
-// game functions
-
-const generateComputerResponse = () => {
-    const index = ((Math.random() * 10).toFixed(0)) % 3
-    return choices[index]
+function colors_html(){
+    var cmp_choice = document.querySelector('#cmp_choice');
+    var usr_choice = document.querySelector('#usr_choice');
+    usr_choice.style.color = "rgb(132, 254, 2)";
+    cmp_choice.style.color = "red";
+}
+var responses = ['rock','paper','scissor'];
+ var computer_response = ()=>{
+    var i = Math.floor(Math.random()*10)%3;
+    var back = responses[i];
+    var added_class = document.getElementById(back).classList;
+    tie_class = document.getElementById(back).classList;
+    added_class.add('cmp');
+    return back;
 }
 
-const result = (winner, userResponse, computerResponse) => {
-    switch(winner){
-        case "user":
-            // display message
-            message_box.innerHTML=` User Wins !! <br/> ${userResponse} beats ${computerResponse} `
-            document.querySelector(`#${userResponse}`).classList.add('user_won')
-            // setTimeout(2000,()=> document.querySelector(`#${userResponse}`).classList.remove('won'))
-            // update scoreboard
-            user_board.innerHTML=++user_score
-            break
-        case "computer":
-             message_box.innerHTML=` Computer Wins !! <br/> ${computerResponse} beats ${userResponse}`
-            computer_board.innerHTML=++computer_score
-            break
-        default:
-            window.alert("something went wrong")
+const destroy = () => {
+    message.innerHTML = '';
+};
+
+
+let result = (userresponse,Computerr)=>{
+    switch(Computerr){
+        case 'rock':
+            switch(userresponse){
+                case 'paper':
+                    message.innerHTML = `<span > ${user_name} Wins!!!<br/> <span id = "usr_choice">Paper</span> Beats <span id = "cmp_choice">Rock</span></span>`;
+                    colors_html();
+                    u_score.innerHTML = ++user_score;
+                    break;
+                case 'scissor':
+                    message.innerHTML = `<span > Computer Wins!!!<br/> <span id = "cmp_choice">Rock</span> Beats <span id = "usr_choice">Scissor</span></span>`;
+                    colors_html();
+                    c_score.innerHTML = ++comp_score;
+                    break;
+            }
+            break;
+        case 'scissor':
+            switch(userresponse){
+                case 'paper':
+                    c_score.innerHTML = ++comp_score;
+                    message.innerHTML = `<span > Computer Wins!!!<br/> <span id = "cmp_choice">Scissor</span> Beats <span id = "usr_choice">Paper</span></span>`;
+                    colors_html();
+                    break;
+                case 'rock':
+                    u_score.innerHTML = ++user_score;
+                    message.innerHTML = `<span > ${user_name} Wins!!!<br/> <span id = "usr_choice">Rock</span> Beats <span id = "cmp_choice">Scissor</span></span>`;
+                    colors_html();
+                    break;
+            }
+            break;
+            case 'paper':
+                switch(userresponse){
+                    case 'scissor':
+                        message.innerHTML = `<span > ${user_name} Wins!!!<br/> <span id = "usr_choice">Scissor</span> Beats <span id = "cmp_choice">Paper</span></span>`;
+                        colors_html();
+                        u_score.innerHTML = ++user_score;
+                        break;
+                    case 'rock':
+                        message.innerHTML = `<span > Computer Wins!!!<br/> <span id = "cmp_choice">Paper</span> Beats <span id = "usr_choice">Rock</span></span>`;
+                        colors_html();
+                        c_score.innerHTML = ++comp_score;
+                        break;
+                }
+                break;
+            default:
+                alert('Invalid Choice');
     }
 }
 
-const playGame = (userResponse) => {
-    console.log(userResponse);
-    const computerResponse = generateComputerResponse()
-    if (userResponse === computerResponse) return console.log('Tie!!')
-    switch (userResponse) {
-        case "rock":
-            switch (computerResponse) {
-                case "paper":
-                    return result("computer", userResponse, computerResponse)
-                case "scissors":
-                    return result("user", userResponse, computerResponse)
-            }
-        case "paper":
-            switch (computerResponse) {
-                case "rock":
-                    return result("user", userResponse, computerResponse)
-                case "scissors":
-                    return result("computer", userResponse, computerResponse)
-            }
-        case "scissors":
-            switch (computerResponse) {
-                case "rock":
-                    return result("computer", userResponse, computerResponse)
-                case "paper":
-                    return result("user", userResponse, computerResponse)
-            }
-        default:
-            window.alert('invalid response')
-
-    }
-
+function remove_border_color_cmp(){
+    rock.classList.remove('cmp');
+    scissor.classList.remove('cmp');
+    paper.classList.remove('cmp');
 }
 
-// add event listeners
-rock.addEventListener('click', (e) => playGame(e.target.id))
-paper.addEventListener('click', (e) => playGame(e.target.id))
-scissors.addEventListener('click', (e) => playGame(e.target.id))
+function remove_border_color_user(userresponse){
+    if(userresponse != 'rock'){
+        rock.classList.remove('bcc');
+    }
+    if(userresponse != 'scissor' ){
+        scissor.classList.remove('bcc');
+    }
+    if(userresponse != 'paper'){
+        paper.classList.remove('bcc');
+    }
+}
+
+function remove_everything(){
+    destroy();
+    rock.classList.remove('bcc');
+    scissor.classList.remove('bcc');
+    paper.classList.remove('bcc');
+    tie_class.remove('tie');
+    rock.classList.remove('cmp');
+    scissor.classList.remove('cmp');
+    paper.classList.remove('cmp');
+    message.style.color = "white";
+}
+
+let playgame = (userresponse)=>{
+    destroy();
+    remove_border_color_user(userresponse);
+    remove_border_color_cmp();
+    var Computerr = computer_response();
+    if(Computerr == userresponse){
+       message.innerHTML = `It's a Tie <br/> Try Again!!!`;
+       message.style.color = "red";
+       tie_class.add('tie');
+    }
+    else{
+        result(userresponse,Computerr);
+    }
+   return 0;
+}
+
+rock.addEventListener('click', e =>{
+    var added_class = document.getElementById('rock').classList;
+    added_class.add('bcc');
+    playgame(e.target.id);
+    setTimeout(()=>{
+        remove_everything();
+    },1000);
+    
+} );
+paper.addEventListener('click', e =>{
+    var added_class = document.getElementById('paper').classList;
+    added_class.add('bcc');
+    playgame(e.target.id);
+    setTimeout(()=>{
+        remove_everything();
+    },1000);
+} );
+scissor.addEventListener('click', e =>{
+    var added_class = document.getElementById('scissor').classList;
+    added_class.add('bcc');
+    playgame(e.target.id);
+    setTimeout(()=>{
+        remove_everything();
+    },1000);
+} );
+reset.addEventListener('click',()=>{
+    user_score = 0;
+    comp_score = 0;
+    u_score.innerHTML = user_score;
+    c_score.innerHTML = comp_score;
+    remove_everything();
+})

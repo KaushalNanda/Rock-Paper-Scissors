@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ms+Madi&family=Nunito+Sans:ital,wght@1,600&display=swap" rel="stylesheet">
     <script defer src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
 </head>
+<body>
 
-<body class="light">
-    <header></header>
-
-    <div class="container">
-        <div class="scoreboard">
-            <div class="user">0</div>
-            <div class="divide">|</div>
-            <div class="comp">0</div>
-        </div>
-        <div class="message"></div>
-        <div class="options">
-            <img id="rock" src="fist.svg" alt="rock">
-            <img id="paper" src="hand.svg" alt="paper">
-            <img id="scissors" src="scissors.svg" alt="scissors">
-        </div>
+    <div class="scoreboard">
+        <div class="user-board">0</div>
+        <div id="remove-space">|</div>
+        <div class="computer">0</div>
     </div>
-
-    <footer></footer>
-
+    <div class="Winner-text">
+    </div>
+    <div class="rps">
+        <img id="rock" class=" " src="https://c8.alamy.com/comp/2A4JHC6/clenched-fist-gym-logo-or-label-vector-illustration-2A4JHC6.jpg">
+        <img id="paper" src="https://static.vecteezy.com/system/resources/thumbnails/002/465/922/small/hand-showing-five-fingers-free-vector.jpg" alt="">
+        <img id="scissor" src="https://www.seekpng.com/png/detail/37-379463_hand-scissors-icon.png" alt="">
+    </div>
+    <div>
+        <button id="reset">Reset</button>
+    </div>
 </body>
-
 </html>
